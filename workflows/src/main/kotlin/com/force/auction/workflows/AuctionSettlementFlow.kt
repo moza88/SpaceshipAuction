@@ -11,19 +11,13 @@ import net.corda.core.transactions.SignedTransaction
 import net.corda.core.utilities.ProgressTracker
 import java.util.*
 
-@InitiatingFlow
 @StartableByRPC
-class AuctionSettlementFlow(
-        private val auctionId: UUID,
-        private val amount: Amount<Currency>) : FlowLogic<Unit>() {
-
-    override val progressTracker = ProgressTracker()
-
+class AuctionSettlementFlow(private val auctionId: UUID,
+                            private val amount: Amount<Currency>) : FlowLogic<Unit>() {
     @Suspendable
     override fun call() {
-
-        subFlow(AuctionDvPFlow(auctionId)
+        subFlow(AuctionDvPFlow(auctionId, amount))
+        subFlow(AuctionExitFlow(auctionId))
     }
-
 
 }
