@@ -10,7 +10,6 @@ class SpaceshipContract : Contract {
     }
 
     override fun verify(tx: LedgerTransaction) {
-        TODO("Not yet implemented")
     }
 
     interface Commands : CommandData {

@@ -67,8 +67,6 @@ class BidFlow(
         return subFlow(FinalityFlow(stx, bidderSession))
 
     }
-
-
 }
 
 //The other side responds back to the BidFlow
